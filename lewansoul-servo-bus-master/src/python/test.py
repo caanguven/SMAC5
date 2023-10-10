@@ -1,6 +1,6 @@
 from lewansoul_servo_bus import ServoBus
 
-servo_bus = ServoBus('/dev/cu.usbserial-0001')
+servo_bus = ServoBus('/dev/ttyUSB0')
 
 # Move servo with ID 1 to 90 degrees in 1.0 seconds
 #servo_bus.move_time_write(1, 90, 1.0)
