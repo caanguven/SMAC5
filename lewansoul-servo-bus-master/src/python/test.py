@@ -1,6 +1,7 @@
 from lewansoul_servo_bus import ServoBus
 
 servo_bus = ServoBus('/dev/ttyUSB0')
+print(servo_bus)
 
 #servo_bus.move_time_write(1, 90, 1.0)
 servo_1 = servo_bus.get_servo(1)
