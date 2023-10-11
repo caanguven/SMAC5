@@ -9,8 +9,8 @@ servo_1 = servo_bus.get_servo(1)
 servo_2 = servo_bus.get_servo(2)
 
 
-servo_1.move_time_write(180, 2)
-servo_2.move_time_write(180, 2)
+servo_1.move_time_write(0, 2)
+servo_2.move_time_write(0, 2)
 
 # Move servo with ID 2 to 180 degrees in 2.0 seconds
 
