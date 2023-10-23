@@ -7,6 +7,7 @@ import struct
 import time
 from multiprocessing import RLock
 from typing import Union, NamedTuple, Literal, Tuple, List, Optional
+import uu
 
 import serial
 
@@ -308,11 +309,13 @@ class ServoBus:
 
     def _receive_packet(self) -> _ServoPacket:
         with self._serial_conn_lock:
-            header = self.serial_conn.read(2)
-            if header != _PACKET_HEADER:
-                raise ServoBusError(
-                    f'Expected header {repr(_PACKET_HEADER)}; '
-                    f'received header {repr(header)}.')
+            # Clear the serial input buffer
+            while True:
+                byte = self.serial_conn.read(1)
+                if byte == _PACKET_HEADER[0:1]:  # Found the first byte of the header
+                    next_byte = self.serial_conn.read(1)
+                    if next_byte == _PACKET_HEADER[1:2]:  # Found the second byte
+                        break  # Exit the loop as the header is found
 
             servo_id, length, command = self.serial_conn.read(3)
             param_count = length - 3

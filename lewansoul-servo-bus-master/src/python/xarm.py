@@ -175,7 +175,7 @@ def main() -> None:
         return
 
     if not serial_port:
-        serial_port = '/dev/cu.usbserial-1110'
+        serial_port = '/dev/cu.usbserial-0001'
 
     # Get choice of what to do
     print()
@@ -200,7 +200,7 @@ def main() -> None:
 
     # Connect to the servo bus
     print()
-    with ServoBus(serial_port_regexp=serial_port) as servo_bus:
+    with ServoBus(serial_port) as servo_bus:
         # Get an instance of an arm
         arm = Xarm(servo_bus)
 
