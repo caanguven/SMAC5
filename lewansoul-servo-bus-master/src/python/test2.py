@@ -1,11 +1,13 @@
 from lewansoul_servo_bus import ServoBus
 from time import sleep 
 
-servo_bus = ServoBus('/dev/cu.usbs erial-0001')
+# servo_bus = ServoBus('/dev/cu.usbserial-0001')
+servo_bus = ServoBus('/dev/ttyUSB0')
+
 
 #servo_bus.move_time_write(1, 90, 1.0)
 servo_1 = servo_bus.get_servo(10)
-servo_1.move_time_write(100, 2)
+servo_1.move_time_write(45, 2)
 
 sleep(2)
 
